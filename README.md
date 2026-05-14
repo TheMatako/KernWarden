@@ -1,6 +1,6 @@
 # KernWarden
 
-**KernWarden** is an asynchronous infrastructure monitoring daemon written in Go. 
+**KernWarden** is an asynchronous infrastructure monitoring daemon written in Go.
 Currently in its foundational MVP stage, it is designed to act as the active probing agent for the KernOS ecosystem, but will be deployable standalone on any Kubernetes cluster or Unix environment.
 
 ## Current Architecture
@@ -12,7 +12,7 @@ The project strictly follows the Standard Go Project Layout:
 
 ## Prerequisites
 
-- **Go** 1.22+
+- **Go** 1.23.0
 - **Make** (for build automation)
 
 ## Development Workflow
@@ -38,7 +38,7 @@ make vet
 This project is currently being bootstrapped.
 
 - [x] Establish project governance, tooling, and strict repository structure.
-- [ ] Implement the core HTTP probe logic (`internal/probes/http`).
+- [x] Implement the core HTTP probe logic (`internal/probes/http`).
 - [ ] Create the main orchestrator and CLI (`cmd/warden`).
 - [ ] Add CI/CD pipelines via GitHub Actions for automated testing.
 - [ ] Containerize the application (Docker).
