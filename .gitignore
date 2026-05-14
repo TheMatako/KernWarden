@@ -1,0 +1,5 @@
+/bin/
+warden
+*.test
+*.out
+.env
