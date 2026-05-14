@@ -27,6 +27,7 @@ run:
 fmt:
 	@echo "==> Formatting code..."
 	go fmt ./...
+	go mod tidy
 
 # Static analysis for vulnerabilities and dead code
 vet:
