@@ -1,0 +1,8 @@
+services:
+  probe:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kernwarden:local
+    container_name: kernwarden-probe
+    restart: "no"
