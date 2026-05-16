@@ -8,3 +8,14 @@ services:
     ports:
       - "8080:8080"
     restart: "no"
+  
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    container_name: kernwarden-prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    depends_on:
+      - probe
+    restart: unless-stopped
