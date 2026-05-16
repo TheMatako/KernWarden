@@ -1,4 +1,9 @@
+volumes:
+  prometheus_data: {}
+
 services:
+
+  # HTTP Probe container
   probe:
     build:
       context: .
@@ -8,14 +13,30 @@ services:
     ports:
       - "8080:8080"
     restart: "no"
-  
+
+  # Prometheus container  
   prometheus:
     image: prom/prometheus:v2.54.1
     container_name: kernwarden-prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
     ports:
       - "9090:9090"
     depends_on:
       - probe
     restart: unless-stopped
+  
+  # Grafana container
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: kernwarden-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./grafana/provisioning/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
